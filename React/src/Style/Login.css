@@ -1,0 +1,171 @@
+/* Background banner */
+.container-fluid.banner {
+  background-color :#636e72;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Login message */
+.login-message {
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Login Box */
+.login-box {
+  width: 500px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 10px;
+  text-align: center;
+}
+
+.login-box h2 {
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+/* Form Styling */
+.login-box .user-box {
+  position: relative;
+}
+.user-box select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #03e9f4;
+  border-radius: 5px;
+  outline: none;
+  appearance: none; /* Hides default arrow in some browsers */
+}
+
+.user-box select:focus {
+  border-color: #03e9f4;
+  box-shadow: 0 0 5px #03e9f4;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+/* Button with Hover Animation */
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #03e9f4; /* Light blue text */
+  background-color: transparent;
+  border: 2px solid #03e9f4; /* Light blue border */
+  border-radius: 25px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #05c1ca; /* Light blue border color */
+  transition: all 0.4s ease;
+}
+
+.button:hover {
+  color: #fff;
+  background-color: #03e9f4; /* Light blue background on hover */
+}
+
+.button:hover::before {
+  width: 100%; /* Make the border full-width on hover */
+  left: 0; /* Align the border to the left */
+  top: 0; /* Move the border to the top */
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.button2 {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #192a56; /* Light blue text */
+  background-color: transparent;
+  border: 2px solid #273c75; /* Light blue border */
+  border-radius: 25px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.button2::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #192a56; /* Light blue border color */
+  transition: all 0.4s ease;
+}
+
+.button2:hover {
+  color: #fff;
+  background-color: #273c75; /* Light blue background on hover */
+}
+
+.button2:hover::before {
+  width: 100%; /* Make the border full-width on hover */
+  left: 0; /* Align the border to the left */
+  top: 0; /* Move the border to the top */
+}
+
+.button2:active {
+  transform: scale(0.95);
+}
+

@@ -1,0 +1,154 @@
+.Main_Heading{
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+    color: rgb(109, 66, 66);
+    font-size: 40px;
+}
+/* .shopping_card_header{
+background-color: rgb(0, 90, 119);
+color: white;
+text-align: center;
+padding: 10px;
+} */
+/* .img_style{
+    width: 60%;
+    height: 30%;
+    object-fit: contain;
+    border: 5px solid #ccc;
+}
+.showing_cart{
+    width: 100% !important;
+    height: 100%;
+} */
+.image_select {
+    display: flex;
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+    padding: 15px; /* Thoda padding badhaya */
+  }
+  
+  .image_style {
+    width: 100%; /* Responsive image */
+    max-width: 250px; /* Pehle 150px tha, ab 250px kiya */
+    height: 250px; /* Pehle 150px tha, ab 250px kiya */
+    object-fit: cover; /* Image ko distort hone se bachane ke liye */
+    border-radius: 10px; /* Thoda aur rounded look */
+    border: 3px solid #ddd; /* Thoda mota border */
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15); /* Thoda aur deep shadow */
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+  }
+  
+  .image_style:hover {
+    transform: scale(1.08); /* Thoda aur zoom effect */
+    border-color: #007bff; /* Hover pe border color change */
+  }
+.heading_display{
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+    color: rgb(109, 66, 66);
+    font-size: 10px;
+} 
+.order_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+} 
+.orderBtn_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.custom-cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.custom-cart-table thead {
+  background-color: #4caf50;
+  color: white;
+}
+
+.custom-cart-table th,
+.custom-cart-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.custom-cart-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.custom-cart-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.cart-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  transition: transform 0.3s ease;
+}
+
+.cart-image:hover {
+  transform: scale(1.05);
+}
+
+.quantity-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.delete-button {
+  background-color: crimson;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+table {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  
+  table img {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  table img:hover {
+    transform: scale(1.1);
+    border-color: #007bff;
+  }
+  
+  .Main_Heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #3c3c3c;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  

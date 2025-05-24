@@ -1,0 +1,79 @@
+/* Card container */
+/* .card {
+    width: 18rem; 
+    height: 400px; 
+    margin:  auto; 
+    border: none; 
+    border-radius: 10px; 
+    padding: 15px; 
+    background: linear-gradient(145deg, #ffffff, #f5f5f5);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -6px -6px 12px rgba(255, 255, 255, 0.7); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden ; 
+    font-family: 'Roboto', sans-serif; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+} */
+
+/* Card hover effect */
+/* .card:hover {
+    transform: translateY(1px); 
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15), -10px -10px 20px rgba(255, 255, 255, 0.9); 
+} */
+
+/* Card title styling */
+/* .card .title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: capitalize; 
+} */
+
+/* Card price */
+/* .card .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #27ae60; 
+    margin: 10px 0;
+    text-align: center;
+} */
+
+/* Card description */
+/* .card .description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #666;
+    text-align: justify;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ddd transparent; 
+} */
+
+/* Footer with button */
+/* .card .footer {
+    margin-top: auto;
+    text-align: center;
+} */
+
+/* .card .button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b); 
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+} */
+
+/* .card .button:hover {
+    background: linear-gradient(90deg, #feb47b, #ff7e5f); 
+    transform: scale(1.05);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+} */

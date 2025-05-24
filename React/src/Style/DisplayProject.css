@@ -1,0 +1,53 @@
+/* Apply global font */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fb;
+}
+
+/* Title styles */
+.display-title {
+  font-weight: 700;
+  color: #212529;
+}
+
+/* Card styling */
+.product-card {
+  background: #fff;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.product-card .discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.product-description {
+  font-size: 0.875rem;
+}
+
+.product-price {
+  font-size: 1rem;
+  color: #0d6efd;
+}

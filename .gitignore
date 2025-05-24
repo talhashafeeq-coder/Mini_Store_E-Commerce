@@ -1,0 +1,10 @@
+backend/myenv
+backend/static
+backend/.env
+
+react/node_modules
+react/.gitignore
+react/readme.md
+react/src/components/GetCategory_name.jsx
+
+

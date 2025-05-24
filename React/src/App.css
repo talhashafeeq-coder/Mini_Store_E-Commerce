@@ -1,0 +1,16 @@
+App.css
+.hero-section {
+  padding-top: 100px; /* Adjust for fixed navbar */
+}
+
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+footer {
+  margin-top: 50px;
+}
