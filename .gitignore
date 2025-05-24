@@ -1,6 +1,7 @@
 backend/myenv
 backend/static
 backend/.env
+backend/migrations
 
 react/node_modules
 react/.gitignore
