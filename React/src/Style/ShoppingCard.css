@@ -1,87 +1,92 @@
-.Main_Heading{
-    text-align: center;
-    margin: 10px;
-    padding: 10px;
-    font-family: sans-serif;
-    color: rgb(109, 66, 66);
-    font-size: 40px;
+/* Main Heading */
+.Main_Heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 30px 0 20px;
+  color: #2c3e50;
+  font-weight: 700;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
 }
-/* .shopping_card_header{
-background-color: rgb(0, 90, 119);
-color: white;
-text-align: center;
-padding: 10px;
-} */
-/* .img_style{
-    width: 60%;
-    height: 30%;
-    object-fit: contain;
-    border: 5px solid #ccc;
+
+.Main_Heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #007bff;
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
-.showing_cart{
-    width: 100% !important;
-    height: 100%;
-} */
+
+/* Image Section */
 .image_select {
-    display: flex;
-    justify-content: center; /* Center image horizontally */
-    align-items: center; /* Center image vertically */
-    padding: 15px; /* Thoda padding badhaya */
-  }
-  
-  .image_style {
-    width: 100%; /* Responsive image */
-    max-width: 250px; /* Pehle 150px tha, ab 250px kiya */
-    height: 250px; /* Pehle 150px tha, ab 250px kiya */
-    object-fit: cover; /* Image ko distort hone se bachane ke liye */
-    border-radius: 10px; /* Thoda aur rounded look */
-    border: 3px solid #ddd; /* Thoda mota border */
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15); /* Thoda aur deep shadow */
-    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
-  }
-  
-  .image_style:hover {
-    transform: scale(1.08); /* Thoda aur zoom effect */
-    border-color: #007bff; /* Hover pe border color change */
-  }
-.heading_display{
-    text-align: center;
-    margin: 10px;
-    padding: 10px;
-    font-family: sans-serif;
-    color: rgb(109, 66, 66);
-    font-size: 10px;
-} 
-.order_section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-} 
-.orderBtn_section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
-.custom-cart-table {
+
+.image_style {
   width: 100%;
+  max-width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid #ccc;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.image_style:hover {
+  transform: scale(1.1) rotate(1deg);
+  border-color: #00bcd4;
+  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
+}
+
+/* Heading Display */
+.heading_display {
+  text-align: center;
+  margin: 20px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  color: #666;
+}
+
+/* Order Button Section */
+.order_section,
+.orderBtn_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Table */
+.custom-cart-table {
+  width: 95%;
+  margin: 30px auto;
   border-collapse: collapse;
-  margin: 20px auto;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .custom-cart-table thead {
-  background-color: #4caf50;
+  background: linear-gradient(to right, #007bff, #00bcd4);
   color: white;
+  font-size: 1rem;
 }
 
 .custom-cart-table th,
 .custom-cart-table td {
-  border: 1px solid #ddd;
-  padding: 12px;
+  padding: 15px;
   text-align: center;
+  border-bottom: 1px solid #eee;
 }
 
 .custom-cart-table tr:nth-child(even) {
@@ -90,65 +95,65 @@ padding: 10px;
 
 .custom-cart-table tr:hover {
   background-color: #f1f1f1;
-}
-
-.cart-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid #ddd;
-  transition: transform 0.3s ease;
-}
-
-.cart-image:hover {
-  transform: scale(1.05);
-}
-
-.quantity-badge {
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: orange;
-  color: white;
-  font-weight: bold;
-  border-radius: 20px;
-}
-
-.delete-button {
-  background-color: crimson;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.delete-button:hover {
-  background-color: darkred;
+/* Cart Image */
+.cart-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid #bbb;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
+
+.cart-image:hover {
+  transform: scale(1.1);
+  border-color: #007bff;
+}
+
+/* Quantity Badge */
+.quantity-badge {
+  padding: 6px 12px;
+  background: linear-gradient(to right, #ff9800, #ff5722);
+  color: white;
+  font-weight: 600;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Delete Button */
+.delete-button {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.delete-button:hover {
+  background: #b71c1c;
+  transform: scale(1.05);
+}
+
+/* Table Border + Animation */
 table {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 20px;
-  }
-  
-  table img {
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  table img:hover {
-    transform: scale(1.1);
-    border-color: #007bff;
-  }
-  
-  .Main_Heading {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #3c3c3c;
-    font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin-top: 25px;
+}
+
+table img {
+  transition: transform 0.3s ease-in-out;
+}
+
+table img:hover {
+  transform: scale(1.1);
+  border-color: #00bcd4;
+}

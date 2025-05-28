@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import IndexUrl from "../hooks/IndexUrl";
-import { FaUsers, FaBox, FaLayerGroup, FaMoneyBillWave, 
-  FaTags, FaUserFriends, FaBars,FaSadCry, FaPlus, FaShoppingCart } from "react-icons/fa";
+import {
+  FaUsers, FaBox, FaLayerGroup, FaMoneyBillWave,
+  FaTags, FaUserFriends, FaBars, FaSadCry, FaPlus, FaShoppingCart
+} from "react-icons/fa";
 import DarkModeToggle from "react-dark-mode-toggle";
 import "../Style/AdminPage.css"; // Import the CSS file 
 export default function Dashboard() {
@@ -113,7 +115,7 @@ export default function Dashboard() {
 
       {/* Main Content */}
       <div className="main-content">
-               {/* Dark Mode Toggle */}
+        {/* Dark Mode Toggle */}
         <div style={{ textAlign: "right", padding: "10px" }}>
           <DarkModeToggle onChange={setIsDarkMode} checked={isDarkMode} size={80} />
         </div>
@@ -141,14 +143,14 @@ export default function Dashboard() {
           <div className="dashboard-card" style={{ backgroundColor: "green" }}>
             <FaMoneyBillWave className="dashboard-icon" />
             <div className="dashboard-info">
-              <h2>{profit.total_profit} $</h2> {/* Corrected this line */}
+              <h2>{profit.total_profit ? profit.total_profit.toFixed(2) : "0.00"} $</h2>
               <p>Total Profit</p>
             </div>
           </div>
           <div className="dashboard-card" style={{ backgroundColor: "blue" }}>
             <FaTags className="dashboard-icon" />
             <div className="dashboard-info">
-              <h2>{profit.total_sales} $</h2> {/* Corrected this line */}
+              <h2>{profit.total_sales ? profit.total_sales.toFixed(2) : "0.00"} $</h2> {/* Corrected this line */}
               <p>Total Sale</p>
             </div>
           </div>

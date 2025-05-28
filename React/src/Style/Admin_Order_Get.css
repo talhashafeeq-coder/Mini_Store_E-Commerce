@@ -1,0 +1,136 @@
+/* 🔷 Heading with gradient underline */
+.order-heading {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 30px;
+  position: relative;
+}
+/* .order-heading::after {
+  content: '';
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, #3498db, #9b59b6);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+} */
+ .fancy-heading {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #34495e;
+  font-weight: bold;
+  border-bottom: 2px dashed #3498db;
+  padding-bottom: 10px;
+}
+
+/* 🔷 Table container with scroll */
+.table-container {
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow-x: auto;
+}
+
+/* 🔷 Table style */
+.order-table thead {
+  background-color: #2c3e50;
+  color: white;
+}
+.order-table th, .order-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+.order-table tbody tr {
+  transition: background 0.3s ease;
+}
+.order-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* 🔷 Dropdown style */
+select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+/* 🔷 Button animation */
+.btn-primary {
+  background-color: #3498db;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+/* 🔷 Disable button */
+button:disabled {
+  background-color: #bdc3c7 !important;
+  cursor: not-allowed;
+  border: none;
+}
+
+/* 🔷 Status badge */
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+}
+.status-pending {
+  background-color: #f1c40f;
+}
+.status-shipped {
+  background-color: #3498db;
+}
+.status-delivered {
+  background-color: #2ecc71;
+}
+.status-cancelled {
+  background-color: #e74c3c;
+}
+.filters input, .filters select {
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .order-table th, .order-table td {
+    font-size: 13px;
+    padding: 5px;
+  }
+  .filters {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.order-heading {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+.export-btn {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  transition: 0.3s;
+}
+
+.export-btn:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}

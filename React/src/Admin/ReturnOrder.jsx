@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import '../Style/ReturnOrder.css'; // Optional: If you want to extract styles
 
 export default function ReturnOrder() {
   const [returns, setReturns] = useState([]);
@@ -20,17 +21,14 @@ export default function ReturnOrder() {
     try {
       const response = await axios.get("http://127.0.0.1:5000/return/api/returns/v1");
       const data = response.data;
-      console.log("🔍 Returns API Response:", data)
       setReturns(data);
 
-      // Initialize selectedStatus state with current status of each order
       const initialStatus = {};
       data.forEach((ret) => {
         initialStatus[ret.id] = ret.status;
       });
       setSelectedStatus(initialStatus);
 
-      // ✅ Count status occurrences
       const statusSummary = {
         pending: data.filter((r) => r.status.toLowerCase() === "pending").length,
         accepted: data.filter((r) => r.status.toLowerCase() === "accepted").length,
@@ -39,7 +37,6 @@ export default function ReturnOrder() {
 
       setStatusCounts(statusSummary);
     } catch (error) {
-      console.error("Error fetching return data", error);
       toast.error("Error fetching return requests");
     }
   };
@@ -50,13 +47,12 @@ export default function ReturnOrder() {
         status: selectedStatus[id],
       });
       toast.success(`Return status updated to ${selectedStatus[id]}!`);
-      fetchReturns(); // Refresh list after update
+      fetchReturns();
     } catch (error) {
       toast.error("Error updating status");
     }
   };
 
-  // ✅ Data for Pie Chart
   const chartData = [
     { name: "Pending", value: statusCounts.pending, color: "#f1c40f" },
     { name: "Accepted", value: statusCounts.accepted, color: "#2ecc71" },
@@ -64,66 +60,67 @@ export default function ReturnOrder() {
   ];
 
   return (
-    <div className="container p-4">
-      <h4>Return Requests</h4>
-      <table className="table table-striped table-bordered table-hover">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Reason</th>
-            <th>Status</th>
-            <th>Update Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {returns.map((ret) => (
-            <tr key={ret.id}>
-              <td>{ret.order_id}</td>
-              <td>{ret.reason}</td>
-              <td>
-                <span
-                  className={`badge ${ret.status.toLowerCase() === "pending"
-                      ? "bg-warning"
-                      : ret.status.toLowerCase() === "accepted"
-                        ? "bg-success"
-                        : "bg-danger"
-                    }`}
-                >
-                  {ret.status.toUpperCase()} {/* ✅ Display in uppercase for UI consistency */}
-                </span>
-              </td>
-              {/* ✅ Dropdown for selecting new status */}
-              <td>
-                <select
-                  className="form-select"
-                  value={selectedStatus[ret.id]}
-                  onChange={(e) =>
-                    setSelectedStatus({ ...selectedStatus, [ret.id]: e.target.value })
-                  }
-                >
-                  <option value="pending">PENDING</option>
-                  <option value="accepted">ACCEPTED</option>
-                  <option value="rejected">REJECTED</option>
-                </select>
-              </td>
-              {/* ✅ Action Button */}
-              <td>
-                <button
-                  className="btn btn-primary btn-sm"
-                  onClick={() => updateReturnStatus(ret.id)}
-                >
-                  Update
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="container my-5">
+      <h2 className="order-heading fancy-heading mb-4">📦 Return Orders Management</h2>
 
-      {/* ✅ Pie Chart Section */}
-      <div className="container mt-4">
-        <h4>Return Requests Overview</h4>
+      {/* ✅ Return Table */}
+      <div className="table-responsive border rounded shadow-sm">
+        <table className="table table-bordered table-hover text-center">
+          <thead className="table-dark">
+            <tr>
+              <th>Order ID</th>
+              <th>Reason</th>
+              <th>Status</th>
+              <th>Update Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {returns.map((ret) => (
+              <tr key={ret.id}>
+                <td>{ret.order_id}</td>
+                <td>{ret.reason}</td>
+                <td>
+                  <span className={`badge px-3 py-2 rounded-pill ${ret.status.toLowerCase() === "pending"
+                    ? "bg-warning text-dark"
+                    : ret.status.toLowerCase() === "accepted"
+                      ? "bg-success"
+                      : "bg-danger"
+                    }`}>
+                    {ret.status.toUpperCase()}
+                  </span>
+                </td>
+                <td>
+                  <select
+                    className="form-select"
+                    value={selectedStatus[ret.id]}
+                    onChange={(e) =>
+                      setSelectedStatus({ ...selectedStatus, [ret.id]: e.target.value })
+                    }
+                  >
+                    <option value="pending">PENDING</option>
+                    <option value="accepted">ACCEPTED</option>
+                    <option value="rejected">REJECTED</option>
+                  </select>
+                </td>
+                <td>
+                  <button
+                    className="btn btn-outline-primary btn-sm"
+                    onClick={() => updateReturnStatus(ret.id)}
+                    disabled={selectedStatus[ret.id] === ret.status}
+                  >
+                    Update
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* ✅ Pie Chart */}
+      <div className="mt-5">
+        <h4 className="text-center mb-3">📊 Return Requests Overview</h4>
         <div className="d-flex justify-content-center">
           <PieChart width={300} height={300}>
             <Pie
@@ -131,7 +128,6 @@ export default function ReturnOrder() {
               cx="50%"
               cy="50%"
               outerRadius={100}
-              fill="#8884d8"
               dataKey="value"
               label
             >

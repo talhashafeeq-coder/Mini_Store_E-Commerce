@@ -45,12 +45,12 @@ export default function OrderList() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const userId = JwttokenGet();
-    
+
         if (!userId) {
             alert("Please log in to place an order.");
             return;
         }
-    
+
         if (cartItems.length === 0) {
             alert("Your cart is empty. Please add products before placing an order.");
             return;
@@ -63,7 +63,7 @@ export default function OrderList() {
             quantity: item.quantity,
             size: item.size
         }));
-    
+
         try {
             const response = await axios.post('http://127.0.0.1:5000/order/api/order/v1', {
                 user_id: userId,
@@ -72,12 +72,12 @@ export default function OrderList() {
                 billing_address: formData.billingAddress,
                 payment_method: formData.paymentMethod
             });
-    
+
             console.log("Order Response:", response.data);
-    
+
             // Order successfully placed, now delete cart items
             await deleteCartItems(userId);
-    
+
             fetchOrders();
             setCartItems([]);
             setFormData({ shippingAddress: '', billingAddress: '', paymentMethod: '' });
@@ -85,7 +85,7 @@ export default function OrderList() {
             console.error('Error creating order:', error.response ? error.response.data : error);
         }
     };
-            
+
     // Function to delete cart items
     const deleteCartItems = async (userId) => {
         try {
@@ -104,83 +104,106 @@ export default function OrderList() {
     }, []);
 
     return (
-        <div className="container mt-4 d-flex justify-content-center">
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-8">
-                        <div className=" p-5 shadow-lg" style={{ maxWidth: '600px'}}>
-                            <Check_userlogin />
-                            <h1 className=" text-center">Checkout</h1>
-                            <form onSubmit={handleSubmit}>
-                                <div className="mb-3">
-                                    <label className="form-label">Shipping Address</label>
-                                    <textarea
-                                        className="form-control"
-                                        name="shippingAddress"
-                                        value={formData.shippingAddress}
-                                        onChange={handleInputChange}
-                                        placeholder="Enter Shipping Address"
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Billing Address</label>
-                                    <textarea
-                                        className="form-control"
-                                        name="billingAddress"
-                                        value={formData.billingAddress}
-                                        onChange={handleInputChange}
-                                        placeholder="Enter Billing Address"
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Payment Method</label>
-                                    <select
-                                        className="form-control"
-                                        name="paymentMethod"
-                                        value={formData.paymentMethod}
-                                        onChange={handleInputChange}
-                                    >
-                                        <option value="">Select Payment Method</option>
-                                        <option value="PayPal">PayPal</option>
-                                        <option value="Credit_Card">Credit_Card</option>
-                                        <option value="Cash_on_Delivery">Cash_on_Delivery</option>
-                                    </select>
-                                </div>
-                                <button type="submit" className="btn btn-primary w-100">Place Order</button>
-                            </form>
-                            <hr />
-                        </div>
-                    </div>
-                    <div className="col-sm-4">
-                        <h3 className="mt-5">Your Cart Items</h3>
-                        {cartItems.length > 0 ? (
-                            <ul className="list-group mb-3">
-                                {cartItems.map((item, index) => (
-                                    <li key={index} className="list-group-item">
-                                        <img src={item.product_image} alt={item.product_name} style={{ width: '50px', marginRight: '10px' }} />
-                                        {item.product_name} - Quantity: {item.quantity} - Price: ${item.price_at_time}
-                                    </li>
-                                ))}
-                            </ul>
-                        ) : (
-                            <p className="text-center">Your cart is empty.</p>
-                        )}
+        <div className="container mt-5">
+  <div className="row justify-content-center">
 
-                        <h2 className="mt-4 text-center">Order Tracking</h2>
-                        {orderList.length > 0 ? (
-                            <ul className="list-group">
-                                {orderList.map((order, index) => (
-                                    <li key={index} className="list-group-item">
-                                        Order ID: {order.id || "N/A"} <br/>Tracking Number: {order.tracking_number || "Not Assigned Yet"}
-                                    </li>
-                                ))}
-                            </ul>
-                        ) : (
-                            <p className="text-center">No orders placed yet.</p>
-                        )}
-                    </div>
+    {/* Checkout Form Section */}
+    <div className="col-md-7 mb-4">
+      <div className="p-4 shadow rounded bg-white">
+        <Check_userlogin />
+        <h2 className="text-center mb-4 text-primary fw-bold">Checkout</h2>
+
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label fw-semibold">Shipping Address</label>
+            <textarea
+              className="form-control"
+              name="shippingAddress"
+              value={formData.shippingAddress}
+              onChange={handleInputChange}
+              placeholder="Enter shipping address"
+              rows="2"
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label fw-semibold">Billing Address</label>
+            <textarea
+              className="form-control"
+              name="billingAddress"
+              value={formData.billingAddress}
+              onChange={handleInputChange}
+              placeholder="Enter billing address"
+              rows="2"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="form-label fw-semibold">Payment Method</label>
+            <select
+              className="form-select"
+              name="paymentMethod"
+              value={formData.paymentMethod}
+              onChange={handleInputChange}
+            >
+              <option value="">Select Payment Method</option>
+              <option value="PayPal">PayPal</option>
+              <option value="Credit_Card">Credit Card</option>
+              <option value="Cash_on_Delivery">Cash on Delivery</option>
+            </select>
+          </div>
+
+          <button type="submit" className="btn btn-success w-100 py-2 fw-bold">
+            Place Order
+          </button>
+        </form>
+      </div>
+    </div>
+
+    {/* Cart + Order Section */}
+    <div className="col-md-5">
+      <div className="bg-light p-3 shadow-sm rounded mb-4">
+        <h4 className="text-center text-dark">Your Cart Items</h4>
+        {cartItems.length > 0 ? (
+          <ul className="list-group">
+            {cartItems.map((item, index) => (
+              <li key={index} className="list-group-item d-flex align-items-center">
+                <img
+                  src={item.product_image}
+                  alt={item.product_name}
+                  style={{ width: '50px', height: '50px', objectFit: 'cover', marginRight: '10px' }}
+                />
+                <div>
+                  <strong>{item.product_name}</strong><br />
+                  Quantity: {item.quantity} | Price: ${item.price_at_time}
                 </div>
-            </div>
-        </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-center">Your cart is empty.</p>
+        )}
+      </div>
+
+      <div className="bg-white p-3 shadow-sm rounded">
+        <h4 className="text-center text-dark">Order Tracking</h4>
+        {orderList.length > 0 ? (
+          <ul className="list-group">
+            {orderList.map((order, index) => (
+              <li key={index} className="list-group-item">
+                <strong>Order ID:</strong> {order.id || "N/A"}<br />
+                <strong>Tracking #:</strong> {order.tracking_number || "Not Assigned Yet"}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-center">No orders placed yet.</p>
+        )}
+      </div>
+    </div>
+
+  </div>
+</div>
+
     );
 }
