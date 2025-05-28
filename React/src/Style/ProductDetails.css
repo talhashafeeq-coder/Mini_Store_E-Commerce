@@ -135,17 +135,40 @@ select, input {
 @media (max-width: 768px) {
   .product-grid {
     flex-direction: column;
+    gap: 20px;
+  }
+
+  .image-section,
+  .details-section {
+    min-width: 100%;
+  }
+
+  .main-container {
+    padding: 10px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btnStyle {
+    width: 100%;
+    text-align: center;
+  }
+
+  .social-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-actions button {
+    justify-content: center;
   }
 
   .sticky-buttons {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    z-index: 999;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 }

@@ -4,13 +4,15 @@
 .hero-banner {
   position: relative;
   height: 100vh;
-  background-image: url('https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3');
+  background-image: url('https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=1350&q=80');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   color: white;
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .overlay {
@@ -19,7 +21,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+  background: linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.45));
   z-index: 1;
 }
 
@@ -28,34 +30,48 @@
   z-index: 2;
   max-width: 800px;
   margin: auto;
-  padding: 0 15px;
+  padding: 0 20px;
+  text-shadow: 0 0 8px rgba(0,0,0,0.7);
+}
+
+.small-tagline {
+  font-weight: 500;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #f0e6e6cc;
 }
 
 .hero-heading {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .hero-subtext {
   font-size: 1.125rem;
   font-weight: 300;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem;
+  color: #eee;
+  letter-spacing: 0.03em;
 }
 
 .hero-buttons .btn {
   font-size: 1rem;
-  padding: 12px 28px;
-  transition: all 0.3s ease;
+  padding: 14px 32px;
   border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  user-select: none;
 }
 
 .hero-buttons .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(255,255,255,0.4);
+  transform: scale(1.07);
+  box-shadow: 0 0 15px rgba(255,255,255,0.6);
 }
 
 .promo-badge {
@@ -64,20 +80,38 @@
   right: 20px;
   background: #ff4d4f;
   color: white;
-  font-weight: bold;
-  padding: 8px 16px;
+  font-weight: 700;
+  padding: 10px 20px;
   border-radius: 30px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   z-index: 3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  user-select: none;
+  letter-spacing: 1px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .hero-heading {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
   }
 
   .hero-subtext {
     font-size: 1rem;
+  }
+
+  .hero-buttons .btn {
+    padding: 12px 28px;
+  }
+
+  .promo-badge {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-heading {
+    font-size: 2.2rem;
   }
 
   .hero-buttons .btn {

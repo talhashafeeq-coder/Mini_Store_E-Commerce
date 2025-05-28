@@ -18,11 +18,23 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { fetchCartData, fetchProducts } = useCart();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5000/product/api/product/v1/${id}`);
+        const response = await axios.get(
+          `http://127.0.0.1:5000/product/api/product/v1/${id}`
+        );
         const productData = response.data.product || {};
         console.log("Product Details:", productData);
 
@@ -73,7 +85,10 @@ const ProductDetails = () => {
     };
 
     try {
-      const response = await axios.post("http://127.0.0.1:5000/shoppingcard/api/shoppingCard/v1", payload);
+      const response = await axios.post(
+        "http://127.0.0.1:5000/shoppingcard/api/shoppingCard/v1",
+        payload
+      );
       console.log("Product added to cart:", response.data);
       toast.success("Order Successful! 🎉");
       fetchProducts();
@@ -106,28 +121,36 @@ const ProductDetails = () => {
         <div className="product-grid">
           {/* Image Section */}
           <div className="image-section">
-            <ReactImageMagnify
-              {...{
-                smallImage: {
-                  alt: product.name,
-                  isFluidWidth: true,
-                  src: product.image_url,
-                },
-                largeImage: {
-                  src: product.image_url,
-                  width: 1200,
-                  height: 1800,
-                },
-              }}
-              className="main-image"
-            />
+            {isMobile ? (
+              <img
+                src={product.image_url}
+                alt={product.name}
+                className="main-image"
+                style={{ width: "100%", padding: "10px", border: "1px solid #eee" }}
+              />
+            ) : (
+              <ReactImageMagnify
+                {...{
+                  smallImage: {
+                    alt: product.name,
+                    isFluidWidth: true,
+                    src: product.image_url,
+                  },
+                  largeImage: {
+                    src: product.image_url,
+                    width: 1200,
+                    height: 1800,
+                  },
+                }}
+                className="main-image"
+              />
+            )}
             <div className="thumbnails">
               <img
                 src={product.image_url}
                 alt="thumbnail"
                 className="thumbnail active"
               />
-              {/* Add more thumbnails if needed */}
             </div>
           </div>
 
@@ -161,7 +184,11 @@ const ProductDetails = () => {
                   onChange={handleSizeChange}
                 >
                   {product.sizes.map((item, index) => (
-                    <option key={index} value={item.size} disabled={item.quantity <= 0}>
+                    <option
+                      key={index}
+                      value={item.size}
+                      disabled={item.quantity <= 0}
+                    >
                       {item.size} {item.quantity <= 0 ? "(Out of Stock)" : ""}
                     </option>
                   ))}
@@ -173,8 +200,7 @@ const ProductDetails = () => {
 
             <div className="quantity-selector mt-3">
               <p>
-                <strong>Stock:</strong>{" "}
-                {quantity > 0 ? quantity : "Out of Stock"}
+                <strong>Stock:</strong> {quantity > 0 ? quantity : "Out of Stock"}
               </p>
             </div>
 
@@ -190,9 +216,15 @@ const ProductDetails = () => {
             </div>
 
             <div className="social-actions">
-              <button><FaHeart /> Wishlist</button>
-              <button><FaShareAlt /> Share</button>
-              <button><FaStar /> Rate</button>
+              <button>
+                <FaHeart /> Wishlist
+              </button>
+              <button>
+                <FaShareAlt /> Share
+              </button>
+              <button>
+                <FaStar /> Rate
+              </button>
             </div>
           </div>
         </div>
